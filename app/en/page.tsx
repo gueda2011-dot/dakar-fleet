@@ -95,7 +95,6 @@ function ContactForm() {
   );
 }
 
-// ── Lang switcher ──────────────────────────────────────────────
 function LangSwitcher() {
   return (
     <div className="flex items-center gap-1 rounded-full border border-white/15 p-0.5 text-[0.72rem] uppercase tracking-[0.1em]">
@@ -115,16 +114,9 @@ export default function EnPage() {
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(10,10,10,0.78)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-         <a href="#top" className="flex items-center">
-  <Image
-    src="/logo.png"
-    alt="Dakar Fleet"
-    width={150}
-    height={56}
-    className="h-14 w-auto object-contain"
-    priority
-  />
-</a>
+          <a href="#top" className="flex items-center">
+            <Image src="/logo.png" alt="Dakar Fleet" width={150} height={56} className="h-14 w-auto object-contain" priority />
+          </a>
           <nav className="hidden items-center gap-8 text-[0.78rem] uppercase tracking-[0.12em] text-white/70 md:flex">
             <a href="#services" className="transition hover:text-white">{t.nav.services}</a>
             <a href="#tarifs" className="transition hover:text-white">{t.nav.pricing}</a>
@@ -347,9 +339,11 @@ export default function EnPage() {
                   {t.contact.title}<br /><span className="italic text-[#C9A84C]">{t.contact.titleHighlight}</span> {t.contact.titleEnd}
                 </h2>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-white/70">{t.contact.subtitle}</p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                {/* ── CONTACT BUTTONS ── */}
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={WA} className="rounded-full bg-[#C9A84C] px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-black transition hover:scale-[1.02] hover:bg-[#E8C97A]">{t.contact.whatsapp}</a>
                   <a href="tel:+221777796922" className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]">{t.contact.call}</a>
+                  <a href="mailto:contact@dakarfleet.com" className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]">{t.contact.email}</a>
                 </div>
               </div>
               <ContactForm />
@@ -371,6 +365,7 @@ export default function EnPage() {
               <p>{t.footer.phone}</p>
               <p>{t.footer.location}</p>
               <p>{t.footer.whatsappNote}</p>
+              <a href="mailto:contact@dakarfleet.com" className="block transition hover:text-[#C9A84C]">{t.footer.email}</a>
             </div>
           </div>
           <div>
