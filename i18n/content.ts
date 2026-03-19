@@ -165,6 +165,7 @@ export const content = {
         "Transfert aéroport, chauffeur privé, déplacement business, excursion ou partenariat hôtelier : contactez Dakar Fleet pour une réponse rapide.",
       whatsapp: "WhatsApp",
       call: "Appeler maintenant",
+      email: "contact@dakarfleet.com",
       form: {
         label: "Demande rapide",
         name: "Votre nom",
@@ -188,6 +189,7 @@ export const content = {
         "Service de transport premium avec chauffeur à Dakar, axé sur le confort, la réactivité et une image moderne.",
       contactTitle: "Contact",
       phone: "+221 77 779 69 22",
+      email: "contact@dakarfleet.com",
       location: "Dakar, Sénégal",
       whatsappNote: "Réservation rapide via WhatsApp",
       servicesTitle: "Services clés",
@@ -364,6 +366,7 @@ export const content = {
         "Airport transfer, private chauffeur, business travel, tour or hotel partnership — contact Dakar Fleet for a fast response.",
       whatsapp: "WhatsApp",
       call: "Call now",
+      email: "contact@dakarfleet.com",
       form: {
         label: "Quick request",
         name: "Your name",
@@ -386,6 +389,7 @@ export const content = {
         "Premium chauffeur service in Dakar, focused on comfort, responsiveness and a modern image.",
       contactTitle: "Contact",
       phone: "+221 77 779 69 22",
+      email: "contact@dakarfleet.com",
       location: "Dakar, Senegal",
       whatsappNote: "Quick booking via WhatsApp",
       servicesTitle: "Key services",

@@ -226,16 +226,16 @@ export default function HomePage() {
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(10,10,10,0.78)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-         <a href="#top" className="flex items-center">
-  <Image
-    src="/logo.png"
-    alt="Dakar Fleet"
-    width={150}
-    height={56}
-    className="h-14 w-auto object-contain"
-    priority
-  />
-</a>
+          <a href="#top" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Dakar Fleet"
+              width={150}
+              height={56}
+              className="h-14 w-auto object-contain"
+              priority
+            />
+          </a>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 text-[0.78rem] uppercase tracking-[0.12em] text-white/70 md:flex">
@@ -610,7 +610,8 @@ export default function HomePage() {
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-white/70">
                   Transfert aéroport, chauffeur privé, déplacement business, excursion ou partenariat hôtelier : contactez Dakar Fleet pour une réponse rapide.
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                {/* ── BOUTONS CONTACT ── */}
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a
                     href="https://wa.me/221777796922?text=Bonjour%20Dakar%20Fleet,%20je%20souhaite%20r%C3%A9server%20un%20trajet."
                     className="rounded-full bg-[#C9A84C] px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-black transition hover:scale-[1.02] hover:bg-[#E8C97A]"
@@ -622,6 +623,12 @@ export default function HomePage() {
                     className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]"
                   >
                     Appeler maintenant
+                  </a>
+                  <a
+                    href="mailto:contact@dakarfleet.com"
+                    className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]"
+                  >
+                    contact@dakarfleet.com
                   </a>
                 </div>
               </div>
@@ -650,6 +657,12 @@ export default function HomePage() {
               <p>+221 77 779 69 22</p>
               <p>Dakar, Sénégal</p>
               <p>Réservation rapide via WhatsApp</p>
+              <a
+                href="mailto:contact@dakarfleet.com"
+                className="block transition hover:text-[#C9A84C]"
+              >
+                contact@dakarfleet.com
+              </a>
             </div>
           </div>
 
