@@ -146,6 +146,15 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
   );
 }
 
+function LangSwitcher() {
+  return (
+    <div className="flex items-center gap-1 rounded-full border border-white/15 p-0.5 text-[0.72rem] uppercase tracking-[0.1em]">
+      <span className="rounded-full bg-[#C9A84C] px-3 py-1.5 font-medium text-black">FR</span>
+      <a href="/en" className="px-3 py-1.5 text-white/50 transition hover:text-white">EN</a>
+    </div>
+  );
+}
+
 function ContactForm() {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ nom: "", date: "", type: "" });
@@ -217,9 +226,16 @@ export default function HomePage() {
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(10,10,10,0.78)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <a href="#top" className="font-title text-[1.45rem] tracking-[0.22em] text-[#C9A84C]">
-            DAKAR<span className="text-[#F7F3EE]">FLEET</span>
-          </a>
+         <a href="#top" className="flex items-center">
+  <Image
+    src="/logo.png"
+    alt="Dakar Fleet"
+    width={150}
+    height={56}
+    className="h-14 w-auto object-contain"
+    priority
+  />
+</a>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 text-[0.78rem] uppercase tracking-[0.12em] text-white/70 md:flex">
@@ -231,6 +247,7 @@ export default function HomePage() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <LangSwitcher />
             <a href="tel:+221777796922" className="hidden text-sm text-[#C9A84C] transition hover:text-[#E8C97A] sm:block">
               +221 77 779 69 22
             </a>
