@@ -127,12 +127,14 @@ export const content = {
           name: "BYD Atto 2",
           description:
             "Confort haut de gamme, image affirmée et expérience premium adaptée aux clients business, VIP et hôteliers.",
+          specs: ["4", "3 valises", "312 km", "Wifi, USB-C, Climatisation"],
         },
         {
           tag: "Compact Premium",
           name: "BYD Dolphin",
           description:
             "Mobilité urbaine élégante, silencieuse et efficace pour les trajets privés, professionnels et hôteliers à Dakar.",
+          specs: ["4", "2 valises", "340 km", "Wifi, USB-C, Climatisation"],
         },
       ],
       specs: {
@@ -169,12 +171,22 @@ export const content = {
       form: {
         label: "Demande rapide",
         name: "Votre nom",
+        phone: "Votre téléphone",
+        pickup: "Lieu de prise en charge (ex : AIBD, Hôtel Radisson...)",
         type: "Type de trajet",
         submit: "Envoyer via WhatsApp",
         successTitle: "Demande envoyée",
         successText:
           "Nous revenons vers vous sous 10 minutes via WhatsApp.",
         newRequest: "Nouvelle demande",
+        introMessage: "Bonjour Dakar Fleet,\nje souhaite réserver un trajet.",
+        fieldLabels: {
+          name: "Nom :",
+          phone: "Téléphone :",
+          date: "Date :",
+          type: "Type :",
+          pickup: "Prise en charge :",
+        },
         types: [
           "Transfert Aéroport",
           "Mise à disposition",
@@ -194,10 +206,10 @@ export const content = {
       whatsappNote: "Réservation rapide via WhatsApp",
       servicesTitle: "Services clés",
       services: [
-        "Transferts aéroport",
-        "Mise à disposition",
-        "Excursions et tours",
-        "Partenariats hôtels & entreprises",
+        { label: "Transferts aéroport", href: "#services" },
+        { label: "Mise à disposition", href: "#services" },
+        { label: "Excursions et tours", href: "#services" },
+        { label: "Partenariats hôtels & entreprises", href: "#partenaires" },
       ],
     },
     waButton: "Réserver",
@@ -329,12 +341,14 @@ export const content = {
           name: "BYD Atto 2",
           description:
             "High-end comfort, a strong presence and a premium experience tailored for business, VIP and hotel clients.",
+          specs: ["4", "3 suitcases", "312 km", "Wifi, USB-C, A/C"],
         },
         {
           tag: "Premium Compact",
           name: "BYD Dolphin",
           description:
             "Elegant, silent and efficient urban mobility for private, professional and hotel transfers in Dakar.",
+          specs: ["4", "2 suitcases", "340 km", "Wifi, USB-C, A/C"],
         },
       ],
       specs: {
@@ -370,11 +384,21 @@ export const content = {
       form: {
         label: "Quick request",
         name: "Your name",
+        phone: "Your phone number",
+        pickup: "Pickup location (e.g. AIBD airport, hotel name...)",
         type: "Type of journey",
         submit: "Send via WhatsApp",
         successTitle: "Request sent",
         successText: "We'll get back to you within 10 minutes via WhatsApp.",
         newRequest: "New request",
+        introMessage: "Hello Dakar Fleet,\nI would like to book a ride.",
+        fieldLabels: {
+          name: "Name:",
+          phone: "Phone:",
+          date: "Date:",
+          type: "Type:",
+          pickup: "Pickup:",
+        },
         types: [
           "Airport Transfer",
           "Private Hire",
@@ -394,10 +418,10 @@ export const content = {
       whatsappNote: "Quick booking via WhatsApp",
       servicesTitle: "Key services",
       services: [
-        "Airport transfers",
-        "Private hire",
-        "Tours & excursions",
-        "Hotel & corporate partnerships",
+        { label: "Airport transfers", href: "#services" },
+        { label: "Private hire", href: "#services" },
+        { label: "Tours & excursions", href: "#services" },
+        { label: "Hotel & corporate partnerships", href: "#partenaires" },
       ],
     },
     waButton: "Book now",

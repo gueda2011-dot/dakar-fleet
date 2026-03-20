@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL, PHONE, EMAIL } from "@/lib/constants";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -22,16 +24,8 @@ export const metadata: Metadata = {
     title: "Dakar Fleet | Transport premium avec chauffeur à Dakar",
     description:
       "Transferts aéroport, déplacements business et excursions avec chauffeur privé à Dakar. Véhicules électriques BYD, disponibles 24h/24.",
-    url: "https://dakarfleet.com",
+    url: SITE_URL,
     siteName: "Dakar Fleet",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Dakar Fleet – Transport premium électrique à Dakar",
-      },
-    ],
     locale: "fr_SN",
     type: "website",
   },
@@ -40,7 +34,6 @@ export const metadata: Metadata = {
     title: "Dakar Fleet | Transport premium avec chauffeur à Dakar",
     description:
       "Transferts aéroport, déplacements business et excursions avec chauffeur privé à Dakar.",
-    images: ["/og-image.png"],
   },
   keywords: [
     "transport premium Dakar",
@@ -52,20 +45,47 @@ export const metadata: Metadata = {
     "BYD Dakar",
   ],
   authors: [{ name: "Dakar Fleet" }],
-  robots: {
-    index: true,
-    follow: true,
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: SITE_URL,
+    languages: { en: `${SITE_URL}/en` },
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TaxiService",
+  name: "Dakar Fleet",
+  description:
+    "Service de transport premium avec chauffeur à Dakar. Transferts aéroport, déplacements business, excursions.",
+  url: SITE_URL,
+  telephone: PHONE,
+  email: EMAIL,
+  areaServed: { "@type": "City", name: "Dakar", addressCountry: "SN" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dakar",
+    addressCountry: "SN",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday", "Tuesday", "Wednesday", "Thursday",
+      "Friday", "Saturday", "Sunday",
+    ],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  priceRange: "FCFA",
+  image: `${SITE_URL}/logo.png`,
+  sameAs: [`https://wa.me/221777796922`],
+};
+
+export default function FrLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className={`${dmSans.variable} ${cormorant.variable} antialiased`}>
+        <JsonLd data={jsonLd} />
         {children}
       </body>
     </html>
