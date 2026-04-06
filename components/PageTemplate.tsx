@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { ContactForm } from "@/components/ContactForm";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { serviceIcons } from "@/components/ServiceIcons";
+import { Footer } from "@/components/Footer";
 import { WA_BASE, PHONE_DISPLAY, EMAIL } from "@/lib/constants";
 
 const BLUR =
@@ -323,40 +324,7 @@ export function PageTemplate({ lang }: { lang: Locale }) {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="border-t border-white/10 bg-black">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 text-white/70 lg:grid-cols-3 lg:px-8">
-          <div>
-            <div className="font-title text-2xl tracking-[0.22em] text-[#C9A84C]">
-              DAKAR<span className="text-[#F7F3EE]">FLEET</span>
-            </div>
-            <p className="mt-4 leading-7">{t.footer.description}</p>
-          </div>
-
-          <div>
-            <h3 className="font-title text-2xl text-[#F7F3EE]">{t.footer.contactTitle}</h3>
-            <div className="mt-4 space-y-3">
-              <p>{t.footer.phone}</p>
-              <p>{t.footer.location}</p>
-              <p>{t.footer.whatsappNote}</p>
-              <a href={`mailto:${EMAIL}`} className="block transition hover:text-[#C9A84C]">
-                {t.footer.email}
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-title text-2xl text-[#F7F3EE]">{t.footer.servicesTitle}</h3>
-            <div className="mt-4 space-y-3">
-              {t.footer.services.map((s) => (
-                <a key={s.label} href={s.href} className="block transition hover:text-[#C9A84C]">
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer lang={lang} />
 
       <WhatsAppFloat waUrl={WA} label={t.waButton} />
     </main>

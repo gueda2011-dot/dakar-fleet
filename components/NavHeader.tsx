@@ -23,18 +23,19 @@ interface NavHeaderProps {
 export function NavHeader({ lang, nav, waUrl, phoneDisplay }: NavHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const homePrefix = lang === "fr" ? "/" : "/en/";
   const navItems = [
-    { href: "#services", label: nav.services },
-    { href: "#tarifs", label: nav.pricing },
-    { href: "#flotte", label: nav.fleet },
-    { href: "#partenaires", label: nav.partners },
-    { href: "#contact", label: nav.contact },
+    { href: `${homePrefix}#services`, label: nav.services },
+    { href: `${homePrefix}#tarifs`, label: nav.pricing },
+    { href: `${homePrefix}#flotte`, label: nav.fleet },
+    { href: `${homePrefix}#partenaires`, label: nav.partners },
+    { href: `${homePrefix}#contact`, label: nav.contact },
   ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(10,10,10,0.78)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <a href="#top" className="flex items-center">
+        <a href={homePrefix} className="flex items-center">
           <Image
             src="/logo.png"
             alt="Dakar Fleet"
