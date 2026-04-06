@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import "../globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, PHONE, EMAIL } from "@/lib/constants";
@@ -87,6 +88,7 @@ export default function EnLayout({ children }: { children: React.ReactNode }) {
       <body className={`${dmSans.variable} ${cormorant.variable} antialiased`}>
         <JsonLd data={jsonLd} />
         {children}
+        <GoogleAnalytics gaId="G-90BGR08TSS" />
       </body>
     </html>
   );

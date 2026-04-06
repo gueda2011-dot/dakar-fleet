@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dakar Fleet Site
 
-## Getting Started
+Dakar Fleet est une plateforme de présentation et de réservation pour un service premium de transport avec chauffeur privé à Dakar (Sénégal). La flotte se démarque par son approche écologique en utilisant exclusivement des véhicules 100% électriques (BYD).
 
-First, run the development server:
+## Fonctionnalités Principales
+
+- **Internationalisation (i18n) :**
+  - Support de deux langues : Français (`fr`, par défaut sur la racine `/`) et Anglais (`en`, sous `/en`).
+  - Middleware intelligent (`middleware.ts`) pour la détection dynamique de la langue en fonction des cookies (`NEXT_LOCALE`) ou de l'en-tête `Accept-Language`.
+- **Routage :**
+  - Architecture "App Router" via Next.js regroupant les pages par locales (`app/(fr)/` et `app/(en)/`).
+- **Composants :**
+  - Architecture "Landing Page" où l'essentiel du rendu linguistique est porté par le composant maître `PageTemplate.tsx`.
+  - Les contenus textuels sont centralisés et fortement typés dans le fichier `i18n/content.ts`.
+  - Réservation et demandes de partenariat dirigées vers WhatsApp avec génération de messages préformatés.
+
+## Technologies Utilisées
+
+- **Framework :** [Next.js 16](https://nextjs.org/) (App Router)
+- **UI Library :** [React 19](https://react.dev/)
+- **Style :** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Langage principal :** [TypeScript](https://www.typescriptlang.org/)
+
+## Démarrage Rapide
+
+Lancez le serveur de développement local :
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+La plateforme sera accessible sur [http://localhost:3000](http://localhost:3000). Vous pourrez visualiser les changements en direct.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Déploiement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Le site est optimisé pour être déployé très facilement sur [Vercel](https://vercel.com/), créateur de Next.js.
