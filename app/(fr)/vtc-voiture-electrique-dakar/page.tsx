@@ -4,7 +4,7 @@ import { NavHeader } from "@/components/NavHeader";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ContactForm } from "@/components/ContactForm";
-import { WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
+import { SITE_URL, WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
 
 // SPECIFIC SEO METADATA
 export const metadata: Metadata = {
@@ -21,7 +21,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "100% Électrique, 100% Premium à Dakar",
     description: "Expérimentez le silence et la technologie de notre flotte électrique pour vos trajets privés et professionnels au Sénégal.",
-  }
+    url: `${SITE_URL}/vtc-voiture-electrique-dakar`,
+  },
+  twitter: {
+    title: "100% Électrique, 100% Premium à Dakar",
+    description: "Expérimentez le silence et la technologie de notre flotte électrique pour vos trajets privés et professionnels au Sénégal.",
+  },
+  alternates: {
+    canonical: `${SITE_URL}/vtc-voiture-electrique-dakar`,
+    languages: {},
+  },
 };
 
 export default function ElectricFleetPage() {
@@ -43,13 +52,13 @@ export default function ElectricFleetPage() {
           </div>
 
           <h1 className="font-title text-4xl font-light leading-[1.1] text-[#F7F3EE] sm:text-5xl lg:text-6xl">
-            L'Élégance du <span className="italic text-[#4CAF7D]">Zéro Émission</span>
+            L&apos;Élégance du <span className="italic text-[#4CAF7D]">Zéro Émission</span>
             <br />
             sans aucun compromis.
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/70">
-            Dakar Fleet s'engage vers une mobilité responsable avec la première flotte de VTC 
+            Dakar Fleet s&apos;engage vers une mobilité responsable avec la première flotte de VTC
             exclusivement composée de véhicules électriques Premium (BYD Atto 2 & Dolphin) au Sénégal.
           </p>
         </div>
@@ -84,7 +93,7 @@ export default function ElectricFleetPage() {
       <section className="bg-[rgba(247,243,238,0.03)] border-y border-white/10 py-16">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center mb-10">
-             <h2 className="font-title text-3xl text-white">Faites le choix de l'électrique</h2>
+             <h2 className="font-title text-3xl text-white">Faites le choix de l&apos;électrique</h2>
              <p className="mt-2 text-white/60">Transmettez-nous votre besoin, nos véhicules sont prêts.</p>
           </div>
           <ContactForm strings={{...t.contact.form, introMessage: "Bonjour, j'aimerais réserver un trajet avec l'un de vos véhicules électriques."}} />

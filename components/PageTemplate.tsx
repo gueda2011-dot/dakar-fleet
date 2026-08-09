@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { content } from "@/i18n/content";
 import type { Locale } from "@/i18n/content";
 import { NavHeader } from "@/components/NavHeader";
@@ -8,6 +9,7 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { serviceIcons } from "@/components/ServiceIcons";
 import { Footer } from "@/components/Footer";
 import { WA_BASE, PHONE_DISPLAY, EMAIL } from "@/lib/constants";
+import { localizedRoutes } from "@/lib/localized-routes";
 
 const BLUR =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
@@ -149,6 +151,14 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                   </div>
                   <h3 className="font-title text-2xl text-[#F7F3EE]">{service.title}</h3>
                   <p className="mt-3 leading-7 text-white/70">{service.description}</p>
+                  {lang === "fr" && i < 3 && (
+                    <Link
+                      href={i === 0 ? localizedRoutes.airportTransfer.fr : localizedRoutes.businessChauffeur.fr}
+                      className="mt-5 inline-block text-sm font-medium text-[#C9A84C] transition hover:text-[#E8C97A]"
+                    >
+                      En savoir plus
+                    </Link>
+                  )}
                 </article>
               </FadeIn>
             ))}
@@ -210,6 +220,14 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                 {t.fleet.title}
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">{t.fleet.subtitle}</p>
+              {lang === "fr" && (
+                <Link
+                  href={localizedRoutes.electricChauffeur.fr}
+                  className="mt-5 inline-block text-sm font-medium text-[#4CAF7D] transition hover:text-[#7BD8A4]"
+                >
+                  Découvrir notre service VTC électrique
+                </Link>
+              )}
             </div>
           </FadeIn>
 

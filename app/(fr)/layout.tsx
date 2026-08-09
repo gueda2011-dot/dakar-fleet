@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Dakar Fleet" }],
   robots: { index: true, follow: true },
   alternates: {
-    canonical: SITE_URL,
-    languages: { en: `${SITE_URL}/en` },
+    canonical: `${SITE_URL}/`,
+    languages: { fr: `${SITE_URL}/`, en: `${SITE_URL}/en` },
   },
 };
 
