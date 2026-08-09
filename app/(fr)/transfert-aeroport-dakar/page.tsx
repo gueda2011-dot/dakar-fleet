@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ContactForm } from "@/components/ContactForm";
 import { SITE_URL, WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
+import type { AnalyticsContext } from "@/lib/analytics";
 
 // SPECIFIC SEO METADATA FOR THIS SILO PAGE
 export const metadata: Metadata = {
@@ -37,11 +38,16 @@ export const metadata: Metadata = {
 export default function TransfertAeroportPage() {
   const lang = "fr";
   const t = content[lang];
+  const analyticsContext: AnalyticsContext = {
+    locale: "fr",
+    page_type: "service",
+    service_context: "airport_transfer",
+  };
   const WA = `${WA_BASE}?text=Bonjour Dakar Fleet, je souhaite réserver un transfert aéroport depuis/vers AIBD.`;
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
-      <NavHeader lang={lang} nav={t.nav} waUrl={WA} phoneDisplay={PHONE_DISPLAY} />
+      <NavHeader lang={lang} nav={t.nav} waUrl={WA} phoneDisplay={PHONE_DISPLAY} analyticsContext={analyticsContext} />
 
       {/* HERO DEDICATED TO AIRPORT */}
       <section className="relative overflow-hidden border-b border-white/10 pt-16 lg:pt-24 pb-16">
@@ -101,12 +107,12 @@ export default function TransfertAeroportPage() {
              <h2 className="font-title text-3xl text-white">Prêt à réserver votre transfert ?</h2>
              <p className="mt-2 text-white/60">Prix fixe, sans frais cachés. Réponse rapide via WhatsApp.</p>
           </div>
-          <ContactForm strings={{...t.contact.form, introMessage: "Bonjour, je souhaite réserver un transfert pour l'aéroport AIBD."}} />
+          <ContactForm strings={{...t.contact.form, introMessage: "Bonjour, je souhaite réserver un transfert pour l'aéroport AIBD."}} analyticsContext={analyticsContext} />
         </div>
       </section>
 
-      <Footer lang={lang} />
-      <WhatsAppFloat waUrl={WA} label="Réserver" />
+      <Footer lang={lang} analyticsContext={analyticsContext} />
+      <WhatsAppFloat waUrl={WA} label="Réserver" analyticsContext={analyticsContext} />
     </main>
   );
 }

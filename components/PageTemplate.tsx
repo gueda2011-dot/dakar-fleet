@@ -10,12 +10,19 @@ import { serviceIcons } from "@/components/ServiceIcons";
 import { Footer } from "@/components/Footer";
 import { WA_BASE, PHONE_DISPLAY, EMAIL } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { TrackedLink } from "@/components/TrackedLink";
+import type { AnalyticsContext } from "@/lib/analytics";
 
 const BLUR =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
 
 export function PageTemplate({ lang }: { lang: Locale }) {
   const t = content[lang];
+  const analyticsContext: AnalyticsContext = {
+    locale: lang,
+    page_type: "homepage",
+    service_context: "homepage",
+  };
   const WA = `${WA_BASE}?text=${t.whatsappMessage}`;
   const WA_PARTNER = `${WA_BASE}?text=${t.whatsappPartnerMessage}`;
   const specKeys = [
@@ -27,7 +34,7 @@ export function PageTemplate({ lang }: { lang: Locale }) {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
-      <NavHeader lang={lang} nav={t.nav} waUrl={WA} phoneDisplay={PHONE_DISPLAY} />
+      <NavHeader lang={lang} nav={t.nav} waUrl={WA} phoneDisplay={PHONE_DISPLAY} analyticsContext={analyticsContext} />
 
       {/* ── HERO ── */}
       <section id="top" className="relative overflow-hidden border-b border-white/10">
@@ -56,12 +63,22 @@ export function PageTemplate({ lang }: { lang: Locale }) {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
+              <TrackedLink
                 href={WA}
+                analyticsEvents={[
+                  {
+                    name: "contact_whatsapp_click",
+                    params: { ...analyticsContext, cta_location: "hero", contact_method: "whatsapp" },
+                  },
+                  {
+                    name: "booking_cta_click",
+                    params: { ...analyticsContext, cta_location: "hero", contact_method: "whatsapp" },
+                  },
+                ]}
                 className="rounded-full bg-[#C9A84C] px-6 py-4 text-sm font-medium uppercase tracking-[0.1em] text-black transition hover:scale-[1.02] hover:bg-[#E8C97A]"
               >
                 {t.hero.ctaPrimary}
-              </a>
+              </TrackedLink>
               <a
                 href="#services"
                 className="rounded-full border border-white/15 px-6 py-4 text-sm uppercase tracking-[0.1em] text-white transition hover:border-[#C9A84C] hover:text-[#C9A84C]"
@@ -167,12 +184,22 @@ export function PageTemplate({ lang }: { lang: Locale }) {
           <FadeIn delay={200}>
             <div className="mt-14 flex flex-col items-center gap-4 rounded-[1.8rem] border border-[#C9A84C]/15 bg-white/3 py-10 text-center">
               <p className="text-sm uppercase tracking-[0.15em] text-white/60">{t.services.ctaLabel}</p>
-              <a
+              <TrackedLink
                 href={WA}
+                analyticsEvents={[
+                  {
+                    name: "contact_whatsapp_click",
+                    params: { ...analyticsContext, cta_location: "services", contact_method: "whatsapp" },
+                  },
+                  {
+                    name: "booking_cta_click",
+                    params: { ...analyticsContext, cta_location: "services", contact_method: "whatsapp" },
+                  },
+                ]}
                 className="rounded-full bg-[#C9A84C] px-8 py-4 text-sm font-medium uppercase tracking-[0.1em] text-black transition hover:scale-[1.02] hover:bg-[#E8C97A]"
               >
                 {t.services.cta}
-              </a>
+              </TrackedLink>
             </div>
           </FadeIn>
         </div>
@@ -276,12 +303,16 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                   {t.partners.title}
                 </h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">{t.partners.subtitle}</p>
-                <a
+                <TrackedLink
                   href={WA_PARTNER}
+                  analyticsEvents={[{
+                    name: "contact_whatsapp_click",
+                    params: { ...analyticsContext, cta_location: "partners", contact_method: "whatsapp" },
+                  }]}
                   className="mt-8 inline-block rounded-full border border-[#C9A84C]/40 px-6 py-3 text-sm uppercase tracking-[0.1em] text-[#C9A84C] transition hover:border-[#C9A84C] hover:bg-[#C9A84C]/10"
                 >
                   {t.partners.cta}
-                </a>
+                </TrackedLink>
               </div>
             </FadeIn>
 
@@ -316,35 +347,53 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                 </h2>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-white/70">{t.contact.subtitle}</p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
+                  <TrackedLink
                     href={WA}
+                    analyticsEvents={[
+                      {
+                        name: "contact_whatsapp_click",
+                        params: { ...analyticsContext, cta_location: "contact_section", contact_method: "whatsapp" },
+                      },
+                      {
+                        name: "booking_cta_click",
+                        params: { ...analyticsContext, cta_location: "contact_section", contact_method: "whatsapp" },
+                      },
+                    ]}
                     className="rounded-full bg-[#C9A84C] px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-black transition hover:scale-[1.02] hover:bg-[#E8C97A]"
                   >
                     {t.contact.whatsapp}
-                  </a>
-                  <a
+                  </TrackedLink>
+                  <TrackedLink
                     href="tel:+221777796922"
+                    analyticsEvents={[{
+                      name: "contact_phone_click",
+                      params: { ...analyticsContext, cta_location: "contact_section", contact_method: "phone" },
+                    }]}
                     className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]"
                   >
                     {t.contact.call}
-                  </a>
-                  <a
+                  </TrackedLink>
+                  <TrackedLink
                     href={`mailto:${EMAIL}`}
+                    analyticsEvents={[{
+                      name: "contact_email_click",
+                      params: { ...analyticsContext, cta_location: "contact_section", contact_method: "email" },
+                    }]}
                     className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]"
                   >
                     {t.contact.email}
-                  </a>
+                  </TrackedLink>
                 </div>
               </div>
-              <ContactForm strings={t.contact.form} />
+              <ContactForm strings={t.contact.form} analyticsContext={analyticsContext} />
             </div>
           </FadeIn>
         </div>
       </section>
 
-      <Footer lang={lang} />
+      <Footer lang={lang} analyticsContext={analyticsContext} />
 
-      <WhatsAppFloat waUrl={WA} label={t.waButton} />
+      <WhatsAppFloat waUrl={WA} label={t.waButton} analyticsContext={analyticsContext} />
     </main>
   );
 }
