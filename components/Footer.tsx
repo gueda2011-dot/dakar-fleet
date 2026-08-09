@@ -2,8 +2,10 @@ import { content } from "@/i18n/content";
 import type { Locale } from "@/i18n/content";
 import { EMAIL } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { TrackedLink } from "@/components/TrackedLink";
+import type { AnalyticsContext } from "@/lib/analytics";
 
-export function Footer({ lang }: { lang: Locale }) {
+export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsContext: AnalyticsContext }) {
   const t = content[lang];
   return (
     <footer className="border-t border-white/10 bg-black">
@@ -21,9 +23,20 @@ export function Footer({ lang }: { lang: Locale }) {
             <p>{t.footer.phone}</p>
             <p>{t.footer.location}</p>
             <p>{t.footer.whatsappNote}</p>
-            <a href={`mailto:${EMAIL}`} className="block transition hover:text-[#C9A84C]">
+            <TrackedLink
+              href={`mailto:${EMAIL}`}
+              analyticsEvents={[{
+                name: "contact_email_click",
+                params: {
+                  ...analyticsContext,
+                  cta_location: "footer",
+                  contact_method: "email",
+                },
+              }]}
+              className="block transition hover:text-[#C9A84C]"
+            >
               {t.footer.email}
-            </a>
+            </TrackedLink>
           </div>
         </div>
 

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { LangSwitcher } from "./LangSwitcher";
+import { TrackedLink } from "./TrackedLink";
+import type { AnalyticsContext } from "@/lib/analytics";
 
 interface NavStrings {
   services: string;
@@ -18,9 +20,10 @@ interface NavHeaderProps {
   nav: NavStrings;
   waUrl: string;
   phoneDisplay: string;
+  analyticsContext: AnalyticsContext;
 }
 
-export function NavHeader({ lang, nav, waUrl, phoneDisplay }: NavHeaderProps) {
+export function NavHeader({ lang, nav, waUrl, phoneDisplay, analyticsContext }: NavHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const homePrefix = lang === "fr" ? "/" : "/en/";
@@ -56,18 +59,32 @@ export function NavHeader({ lang, nav, waUrl, phoneDisplay }: NavHeaderProps) {
 
         <div className="flex items-center gap-3">
           <LangSwitcher lang={lang} />
-          <a
+          <TrackedLink
             href={`tel:${phoneDisplay.replace(/\s/g, "")}`}
+            analyticsEvents={[{
+              name: "contact_phone_click",
+              params: { ...analyticsContext, cta_location: "header", contact_method: "phone" },
+            }]}
             className="hidden text-sm text-[#C9A84C] transition hover:text-[#E8C97A] sm:block"
           >
             {phoneDisplay}
-          </a>
-          <a
+          </TrackedLink>
+          <TrackedLink
             href={waUrl}
+            analyticsEvents={[
+              {
+                name: "contact_whatsapp_click",
+                params: { ...analyticsContext, cta_location: "header", contact_method: "whatsapp" },
+              },
+              {
+                name: "booking_cta_click",
+                params: { ...analyticsContext, cta_location: "header", contact_method: "whatsapp" },
+              },
+            ]}
             className="rounded-full bg-[#C9A84C] px-5 py-2.5 text-[0.78rem] font-medium uppercase tracking-[0.1em] text-black transition hover:scale-[1.02] hover:bg-[#E8C97A]"
           >
             {nav.book}
-          </a>
+          </TrackedLink>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
@@ -93,9 +110,16 @@ export function NavHeader({ lang, nav, waUrl, phoneDisplay }: NavHeaderProps) {
               {label}
             </a>
           ))}
-          <a href={`tel:${phoneDisplay.replace(/\s/g, "")}`} className="px-6 py-4 text-sm text-[#C9A84C]">
+          <TrackedLink
+            href={`tel:${phoneDisplay.replace(/\s/g, "")}`}
+            analyticsEvents={[{
+              name: "contact_phone_click",
+              params: { ...analyticsContext, cta_location: "header", contact_method: "phone" },
+            }]}
+            className="px-6 py-4 text-sm text-[#C9A84C]"
+          >
             {phoneDisplay}
-          </a>
+          </TrackedLink>
         </nav>
       </div>
     </header>

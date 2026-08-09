@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { WA_NUMBER } from "@/lib/constants";
+import { trackEvent, type AnalyticsContext } from "@/lib/analytics";
 
 interface FormStrings {
   label: string;
@@ -24,13 +25,27 @@ interface FormStrings {
   };
 }
 
-export function ContactForm({ strings }: { strings: FormStrings }) {
+export function ContactForm({
+  strings,
+  analyticsContext,
+}: {
+  strings: FormStrings;
+  analyticsContext: AnalyticsContext;
+}) {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ nom: "", phone: "", date: "", type: "", pickup: "" });
   const today = new Date().toISOString().split("T")[0];
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    trackEvent({
+      name: "contact_form_submit",
+      params: { ...analyticsContext, cta_location: "contact_form", contact_method: "whatsapp" },
+    });
+    trackEvent({
+      name: "contact_whatsapp_click",
+      params: { ...analyticsContext, cta_location: "contact_form", contact_method: "whatsapp" },
+    });
     const lines = [
       strings.introMessage,
       "",

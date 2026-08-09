@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ContactForm } from "@/components/ContactForm";
 import { SITE_URL, WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
+import type { AnalyticsContext } from "@/lib/analytics";
 
 // SPECIFIC SEO METADATA
 export const metadata: Metadata = {
@@ -37,11 +38,16 @@ export const metadata: Metadata = {
 export default function BusinessPage() {
   const lang = "fr";
   const t = content[lang];
+  const analyticsContext: AnalyticsContext = {
+    locale: "fr",
+    page_type: "service",
+    service_context: "business_chauffeur",
+  };
   const WA = `${WA_BASE}?text=Bonjour Dakar Fleet, je souhaite réserver une mise à disposition avec chauffeur.`;
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
-      <NavHeader lang={lang} nav={t.nav} waUrl={WA} phoneDisplay={PHONE_DISPLAY} />
+      <NavHeader lang={lang} nav={t.nav} waUrl={WA} phoneDisplay={PHONE_DISPLAY} analyticsContext={analyticsContext} />
 
       <section className="relative overflow-hidden border-b border-white/10 pt-16 lg:pt-24 pb-16">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(201,168,76,0.14),transparent_26%),radial-gradient(circle_at_15%_82%,rgba(46,107,74,0.11),transparent_22%),linear-gradient(135deg,#0A0A0A_0%,#111108_50%,#0A0A0C_100%)]" />
@@ -97,12 +103,12 @@ export default function BusinessPage() {
              <h2 className="font-title text-3xl text-white">Réservez votre chauffeur privé</h2>
              <p className="mt-2 text-white/60">Indiquez la durée souhaitée et le lieu de prise en charge.</p>
           </div>
-          <ContactForm strings={{...t.contact.form, introMessage: "Bonjour, je souhaite un devis pour une mise à disposition / chauffeur privé."}} />
+          <ContactForm strings={{...t.contact.form, introMessage: "Bonjour, je souhaite un devis pour une mise à disposition / chauffeur privé."}} analyticsContext={analyticsContext} />
         </div>
       </section>
 
-      <Footer lang={lang} />
-      <WhatsAppFloat waUrl={WA} label="Réserver" />
+      <Footer lang={lang} analyticsContext={analyticsContext} />
+      <WhatsAppFloat waUrl={WA} label="Réserver" analyticsContext={analyticsContext} />
     </main>
   );
 }
