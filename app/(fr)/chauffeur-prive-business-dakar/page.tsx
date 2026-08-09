@@ -4,7 +4,7 @@ import { NavHeader } from "@/components/NavHeader";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ContactForm } from "@/components/ContactForm";
-import { WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
+import { SITE_URL, WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
 
 // SPECIFIC SEO METADATA
 export const metadata: Metadata = {
@@ -22,7 +22,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chauffeur Privé & Mise à disposition | Dakar",
     description: "Transport Business, rendez-vous et hôtels. Un chauffeur dédié, discret et professionnel à votre disposition à Dakar.",
-  }
+    url: `${SITE_URL}/chauffeur-prive-business-dakar`,
+  },
+  twitter: {
+    title: "Chauffeur Privé & Mise à disposition | Dakar",
+    description: "Transport Business, rendez-vous et hôtels. Un chauffeur dédié, discret et professionnel à votre disposition à Dakar.",
+  },
+  alternates: {
+    canonical: `${SITE_URL}/chauffeur-prive-business-dakar`,
+    languages: {},
+  },
 };
 
 export default function BusinessPage() {
@@ -51,7 +60,7 @@ export default function BusinessPage() {
 
           <p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/70">
             Une flotte de véhicules haut de gamme et des chauffeurs formés à la discrétion 
-            pour vos rendez-vous professionnels, vos tournées ou l'accueil de vos clients VIP.
+            pour vos rendez-vous professionnels, vos tournées ou l&apos;accueil de vos clients VIP.
           </p>
         </div>
       </section>
@@ -77,7 +86,7 @@ export default function BusinessPage() {
               <span className="text-2xl">⏳</span>
             </div>
             <h3 className="mt-4 font-title text-xl text-[#F7F3EE]">Flexibilité totale</h3>
-            <p className="mt-2 text-sm text-white/60">Facturation à l'heure, à la demi-journée ou sur plusieurs jours.</p>
+            <p className="mt-2 text-sm text-white/60">Facturation à l&apos;heure, à la demi-journée ou sur plusieurs jours.</p>
           </div>
         </div>
       </section>

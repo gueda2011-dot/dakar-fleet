@@ -1,11 +1,10 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { content } from "@/i18n/content";
 import { NavHeader } from "@/components/NavHeader";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ContactForm } from "@/components/ContactForm";
-import { WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
+import { SITE_URL, WA_BASE, PHONE_DISPLAY } from "@/lib/constants";
 
 // SPECIFIC SEO METADATA FOR THIS SILO PAGE
 export const metadata: Metadata = {
@@ -23,7 +22,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Transfert Aéroport AIBD Dakar | VTC Premium",
     description: "Réservez votre navette premium depuis/vers l'aéroport AIBD. Chauffeur privé, accueil VIP avec pancarte.",
-  }
+    url: `${SITE_URL}/transfert-aeroport-dakar`,
+  },
+  twitter: {
+    title: "Transfert Aéroport AIBD Dakar | VTC Premium",
+    description: "Réservez votre navette premium depuis/vers l'aéroport AIBD. Chauffeur privé, accueil VIP avec pancarte.",
+  },
+  alternates: {
+    canonical: `${SITE_URL}/transfert-aeroport-dakar`,
+    languages: {},
+  },
 };
 
 export default function TransfertAeroportPage() {

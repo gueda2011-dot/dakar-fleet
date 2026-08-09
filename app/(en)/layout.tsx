@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: `${SITE_URL}/en`,
-    languages: { fr: SITE_URL },
+    languages: { fr: `${SITE_URL}/`, en: `${SITE_URL}/en` },
   },
 };
 
