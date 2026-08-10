@@ -3,10 +3,12 @@ import { SITE_URL } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const serviceRoutes = [
+  const localizedPageRoutes = [
     localizedRoutes.airportTransfer,
     localizedRoutes.businessChauffeur,
     localizedRoutes.electricChauffeur,
+    localizedRoutes.about,
+    localizedRoutes.contact,
   ];
 
   return [
@@ -26,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: { fr: `${SITE_URL}/`, en: `${SITE_URL}/en` },
       },
     },
-    ...serviceRoutes.flatMap((routes) =>
+    ...localizedPageRoutes.flatMap((routes) =>
       (["fr", "en"] as const).map((locale) => ({
         url: `${SITE_URL}${routes[locale]}`,
         changeFrequency: "weekly" as const,

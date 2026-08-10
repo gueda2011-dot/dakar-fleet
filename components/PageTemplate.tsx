@@ -398,7 +398,7 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                     }]}
                     className="rounded-full border border-white/20 px-6 py-4 text-center text-sm font-medium uppercase tracking-[0.1em] text-white/80 transition hover:border-[#C9A84C] hover:text-[#C9A84C]"
                   >
-                    {t.contact.email}
+                    {EMAIL}
                   </TrackedLink>
                 </div>
               </div>
