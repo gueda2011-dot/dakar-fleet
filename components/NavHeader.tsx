@@ -5,12 +5,14 @@ import Image from "next/image";
 import { LangSwitcher } from "./LangSwitcher";
 import { TrackedLink } from "./TrackedLink";
 import type { AnalyticsContext } from "@/lib/analytics";
+import { localizedRoutes } from "@/lib/localized-routes";
 
 interface NavStrings {
   services: string;
   pricing: string;
   fleet: string;
   partners: string;
+  about: string;
   contact: string;
   book: string;
 }
@@ -26,19 +28,20 @@ interface NavHeaderProps {
 export function NavHeader({ lang, nav, waUrl, phoneDisplay, analyticsContext }: NavHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const homePrefix = lang === "fr" ? "/" : "/en/";
+  const homePath = localizedRoutes.home[lang];
   const navItems = [
-    { href: `${homePrefix}#services`, label: nav.services },
-    { href: `${homePrefix}#tarifs`, label: nav.pricing },
-    { href: `${homePrefix}#flotte`, label: nav.fleet },
-    { href: `${homePrefix}#partenaires`, label: nav.partners },
-    { href: `${homePrefix}#contact`, label: nav.contact },
+    { href: `${homePath}#services`, label: nav.services },
+    { href: `${homePath}#tarifs`, label: nav.pricing },
+    { href: `${homePath}#flotte`, label: nav.fleet },
+    { href: `${homePath}#partenaires`, label: nav.partners },
+    { href: localizedRoutes.about[lang], label: nav.about },
+    { href: localizedRoutes.contact[lang], label: nav.contact },
   ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(10,10,10,0.78)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <a href={homePrefix} className="flex items-center">
+        <a href={homePath} className="flex items-center">
           <Image
             src="/logo.png"
             alt="Dakar Fleet"
@@ -49,7 +52,7 @@ export function NavHeader({ lang, nav, waUrl, phoneDisplay, analyticsContext }: 
           />
         </a>
 
-        <nav className="hidden items-center gap-8 text-[0.78rem] uppercase tracking-[0.12em] text-white/70 md:flex">
+        <nav className="hidden items-center gap-5 text-[0.75rem] uppercase tracking-[0.1em] text-white/70 lg:flex">
           {navItems.map(({ href, label }) => (
             <a key={href} href={href} className="transition hover:text-white">
               {label}
@@ -87,7 +90,7 @@ export function NavHeader({ lang, nav, waUrl, phoneDisplay, analyticsContext }: 
           </TrackedLink>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] lg:hidden"
             aria-label="Menu"
             aria-expanded={menuOpen}
           >
@@ -98,7 +101,7 @@ export function NavHeader({ lang, nav, waUrl, phoneDisplay, analyticsContext }: 
         </div>
       </div>
 
-      <div className={`overflow-hidden transition-all duration-300 md:hidden ${menuOpen ? "max-h-80" : "max-h-0"}`}>
+      <div className={`overflow-hidden transition-all duration-300 lg:hidden ${menuOpen ? "max-h-[32rem]" : "max-h-0"}`}>
         <nav className="flex flex-col border-t border-white/10 bg-[rgba(10,10,10,0.97)]">
           {navItems.map(({ href, label }) => (
             <a

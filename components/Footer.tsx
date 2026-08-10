@@ -1,6 +1,6 @@
 import { content } from "@/i18n/content";
 import type { Locale } from "@/i18n/content";
-import { EMAIL } from "@/lib/constants";
+import { EMAIL, PHONE, PHONE_DISPLAY } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
 import { TrackedLink } from "@/components/TrackedLink";
 import type { AnalyticsContext } from "@/lib/analytics";
@@ -21,6 +21,16 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
       label: lang === "fr" ? "VTC électrique" : "Electric Chauffeur",
     },
   ] as const;
+  const trustLinks = [
+    {
+      href: localizedRoutes.about[lang],
+      label: lang === "fr" ? "À propos" : "About",
+    },
+    {
+      href: localizedRoutes.contact[lang],
+      label: "Contact",
+    },
+  ] as const;
 
   return (
     <footer className="border-t border-white/10 bg-black">
@@ -35,7 +45,20 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
         <div>
           <h3 className="font-title text-2xl text-[#F7F3EE]">{t.footer.contactTitle}</h3>
           <div className="mt-4 space-y-3">
-            <p>{t.footer.phone}</p>
+            <TrackedLink
+              href={`tel:${PHONE}`}
+              analyticsEvents={[{
+                name: "contact_phone_click",
+                params: {
+                  ...analyticsContext,
+                  cta_location: "footer",
+                  contact_method: "phone",
+                },
+              }]}
+              className="block transition hover:text-[#C9A84C]"
+            >
+              {PHONE_DISPLAY}
+            </TrackedLink>
             <p>{t.footer.location}</p>
             <p>{t.footer.whatsappNote}</p>
             <TrackedLink
@@ -50,7 +73,7 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
               }]}
               className="block transition hover:text-[#C9A84C]"
             >
-              {t.footer.email}
+              {EMAIL}
             </TrackedLink>
           </div>
         </div>
@@ -59,6 +82,11 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
           <h3 className="font-title text-2xl text-[#F7F3EE]">{t.footer.servicesTitle}</h3>
           <div className="mt-4 space-y-3">
             {serviceLinks.map((link) => (
+              <a key={link.href} href={link.href} className="block transition hover:text-[#C9A84C]">
+                {link.label}
+              </a>
+            ))}
+            {trustLinks.map((link) => (
               <a key={link.href} href={link.href} className="block transition hover:text-[#C9A84C]">
                 {link.label}
               </a>

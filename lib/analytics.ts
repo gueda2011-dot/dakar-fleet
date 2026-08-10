@@ -3,12 +3,14 @@
 import { sendGAEvent } from "@next/third-parties/google";
 
 export type AnalyticsLocale = "fr" | "en";
-export type AnalyticsPageType = "homepage" | "service";
+export type AnalyticsPageType = "homepage" | "service" | "about" | "contact";
 export type AnalyticsServiceContext =
   | "homepage"
   | "airport_transfer"
   | "business_chauffeur"
-  | "electric_mobility";
+  | "electric_mobility"
+  | "brand"
+  | "general_contact";
 export type AnalyticsCtaLocation =
   | "header"
   | "hero"
