@@ -47,10 +47,12 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
               <>
                 <a href={localizedRoutes.airportTransfer.fr} className="block transition hover:text-[#C9A84C]">Transfert Aéroport</a>
                 <a href={localizedRoutes.businessChauffeur.fr} className="block transition hover:text-[#C9A84C]">Chauffeur Privé & Business</a>
-                <a href={localizedRoutes.electricChauffeur.fr} className="block transition hover:text-[#C9A84C]">VTC 100% Électrique</a>
+                <a href={localizedRoutes.electricChauffeur.fr} className="block transition hover:text-[#C9A84C]">VTC électrique</a>
               </>
             )}
-            <a href={`${localizedRoutes.home[lang]}#partenaires`} className="block transition hover:text-[#C9A84C]">Hôtels & Conciergeries</a>
+            <a href={`${localizedRoutes.home[lang]}#partenaires`} className="block transition hover:text-[#C9A84C]">
+              {lang === "fr" ? "Hôtels & Conciergeries" : "Hotels & Concierges"}
+            </a>
           </div>
         </div>
       </div>

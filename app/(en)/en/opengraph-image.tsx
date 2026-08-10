@@ -44,7 +44,7 @@ export default function Image() {
           }}
         >
           <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#4CAF7D" }} />
-          <span style={{ color: "#4CAF7D", fontSize: 22 }}>100% Electric vehicles · Available 24/7</span>
+          <span style={{ color: "#4CAF7D", fontSize: 22 }}>Current electric fleet · Available 24/7</span>
         </div>
         <div
           style={{

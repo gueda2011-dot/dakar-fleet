@@ -63,11 +63,6 @@ const jsonLd = {
   telephone: PHONE,
   email: EMAIL,
   areaServed: { "@type": "City", name: "Dakar", addressCountry: "SN" },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Dakar",
-    addressCountry: "SN",
-  },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: [

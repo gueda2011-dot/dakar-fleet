@@ -38,18 +38,18 @@ export const content = {
       signatureText: "Confort, discrétion, ponctualité et image moderne.",
     },
     trust: [
-      "Réponse WhatsApp en moins de 10 min",
-      "Chauffeurs professionnels & discrets",
-      "Véhicules électriques BYD dernière génération",
-      "Basé à Dakar, disponible 24h/24",
+      "Demandes et réservations via WhatsApp",
+      "Service avec chauffeur sur réservation",
+      "Flotte BYD aujourd'hui entièrement électrique",
+      "Implanté à Diamniadio, disponible 24h/24",
       "Solution dédiée hôtels & entreprises",
       "Trajets privés, VIP et business",
     ],
     eco: {
-      text: "Dakar Fleet s'engage pour une mobilité premium et durable ·",
-      highlight: " 100% véhicules électriques",
-      end: " · engagement vers une recharge à l'énergie verte",
-      label: "100% Green Vision",
+      text: "La flotte actuellement exploitée par Dakar Fleet est",
+      highlight: " entièrement électrique",
+      end: " · sa composition pourra évoluer avec le service",
+      label: "Flotte électrique actuelle",
     },
     services: {
       label: "Services",
@@ -127,21 +127,21 @@ export const content = {
           name: "BYD Atto 2",
           description:
             "Confort haut de gamme, image affirmée et expérience premium adaptée aux clients business, VIP et hôteliers.",
-          specs: ["4", "3 valises", "312 km", "Wifi, USB-C, Climatisation"],
+          specs: ["SUV compact", "Électrique", "Dakar et zones desservies", "Trajets privés & business"],
         },
         {
           tag: "Compact Premium",
           name: "BYD Dolphin",
           description:
             "Mobilité urbaine élégante, silencieuse et efficace pour les trajets privés, professionnels et hôteliers à Dakar.",
-          specs: ["4", "2 valises", "340 km", "Wifi, USB-C, Climatisation"],
+          specs: ["Compacte", "Électrique", "Dakar et zones desservies", "Trajets privés & business"],
         },
       ],
       specs: {
-        passengers: "Passagers",
-        luggage: "Bagages",
-        range: "Autonomie",
-        equipment: "Équipements",
+        passengers: "Format",
+        luggage: "Motorisation",
+        range: "Périmètre",
+        equipment: "Usages",
       },
     },
     partners: {
@@ -175,9 +175,9 @@ export const content = {
         pickup: "Lieu de prise en charge (ex : AIBD, Hôtel Radisson...)",
         type: "Type de trajet",
         submit: "Envoyer via WhatsApp",
-        successTitle: "Demande envoyée",
+        successTitle: "WhatsApp est ouvert",
         successText:
-          "Nous revenons vers vous sous 10 minutes via WhatsApp.",
+          "Votre message a été préparé. Envoyez-le dans WhatsApp pour transmettre votre demande à Dakar Fleet.",
         newRequest: "Nouvelle demande",
         introMessage: "Bonjour Dakar Fleet,\nje souhaite réserver un trajet.",
         fieldLabels: {
@@ -254,18 +254,18 @@ export const content = {
       signatureText: "Comfort, discretion, punctuality and modern image.",
     },
     trust: [
-      "WhatsApp response in under 10 min",
-      "Professional & discreet chauffeurs",
-      "Latest generation BYD electric vehicles",
-      "Based in Dakar, available 24/7",
+      "Requests and bookings via WhatsApp",
+      "Chauffeur service by reservation",
+      "Current BYD fleet is entirely electric",
+      "Based in Diamniadio, available 24/7",
       "Dedicated solution for hotels & corporates",
       "Private, VIP and business transfers",
     ],
     eco: {
-      text: "Dakar Fleet is committed to premium, sustainable mobility ·",
-      highlight: " 100% electric vehicles",
-      end: " · committed to green energy charging",
-      label: "100% Green Vision",
+      text: "The fleet currently operated by Dakar Fleet is",
+      highlight: " entirely electric",
+      end: " · its composition may evolve with the service",
+      label: "Current electric fleet",
     },
     services: {
       label: "Services",
@@ -341,21 +341,21 @@ export const content = {
           name: "BYD Atto 2",
           description:
             "High-end comfort, a strong presence and a premium experience tailored for business, VIP and hotel clients.",
-          specs: ["4", "3 suitcases", "312 km", "Wifi, USB-C, A/C"],
+          specs: ["Compact SUV", "Electric", "Dakar and service areas", "Private & business trips"],
         },
         {
           tag: "Premium Compact",
           name: "BYD Dolphin",
           description:
             "Elegant, silent and efficient urban mobility for private, professional and hotel transfers in Dakar.",
-          specs: ["4", "2 suitcases", "340 km", "Wifi, USB-C, A/C"],
+          specs: ["Compact", "Electric", "Dakar and service areas", "Private & business trips"],
         },
       ],
       specs: {
-        passengers: "Passengers",
-        luggage: "Luggage",
-        range: "Range",
-        equipment: "Features",
+        passengers: "Format",
+        luggage: "Powertrain",
+        range: "Service area",
+        equipment: "Uses",
       },
     },
     partners: {
@@ -388,8 +388,9 @@ export const content = {
         pickup: "Pickup location (e.g. AIBD airport, hotel name...)",
         type: "Type of journey",
         submit: "Send via WhatsApp",
-        successTitle: "Request sent",
-        successText: "We'll get back to you within 10 minutes via WhatsApp.",
+        successTitle: "WhatsApp is open",
+        successText:
+          "Your message has been prepared. Send it in WhatsApp to submit your request to Dakar Fleet.",
         newRequest: "New request",
         introMessage: "Hello Dakar Fleet,\nI would like to book a ride.",
         fieldLabels: {

@@ -173,7 +173,11 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                       href={i === 0 ? localizedRoutes.airportTransfer.fr : localizedRoutes.businessChauffeur.fr}
                       className="mt-5 inline-block text-sm font-medium text-[#C9A84C] transition hover:text-[#E8C97A]"
                     >
-                      En savoir plus
+                      {i === 0
+                        ? "Découvrir le transfert aéroport"
+                        : i === 1
+                          ? "Découvrir la mise à disposition"
+                          : "Découvrir le transport business"}
                     </Link>
                   )}
                 </article>
