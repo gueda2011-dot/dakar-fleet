@@ -148,15 +148,15 @@ export function ContactPage({ lang }: { lang: Locale }) {
           <TrackedLink
             href={waUrl}
             analyticsEvents={[
-              {
-                name: "contact_whatsapp_click",
-                params: { ...analyticsContext, cta_location: "contact_section", contact_method: "whatsapp" },
-              },
-              {
-                name: "contact_whatsapp_click",
-                params: { ...analyticsContext, cta_location: "contact_section", contact_method: "whatsapp" },
-              },
-            ]}
+  {
+    name: "contact_whatsapp_click",
+    params: {
+      ...analyticsContext,
+      cta_location: "contact_section",
+      contact_method: "whatsapp",
+    },
+  },
+]}
             className="rounded-[1.6rem] border border-[#25D366]/30 bg-[#25D366]/10 p-6 transition hover:border-[#25D366]/60"
           >
             <span className="block text-[11px] uppercase tracking-[0.18em] text-[#72E39C]">WhatsApp</span>
