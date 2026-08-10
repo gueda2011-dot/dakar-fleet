@@ -153,7 +153,7 @@ export function ContactPage({ lang }: { lang: Locale }) {
                 params: { ...analyticsContext, cta_location: "contact_section", contact_method: "whatsapp" },
               },
               {
-                name: "booking_cta_click",
+                name: "contact_whatsapp_click",
                 params: { ...analyticsContext, cta_location: "contact_section", contact_method: "whatsapp" },
               },
             ]}
