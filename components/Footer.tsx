@@ -50,7 +50,9 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
                 <a href={localizedRoutes.electricChauffeur.fr} className="block transition hover:text-[#C9A84C]">VTC électrique</a>
               </>
             )}
-            <a href={`${localizedRoutes.home[lang]}#partenaires`} className="block transition hover:text-[#C9A84C]">Hôtels & Conciergeries</a>
+            <a href={`${localizedRoutes.home[lang]}#partenaires`} className="block transition hover:text-[#C9A84C]">
+              {lang === "fr" ? "Hôtels & Conciergeries" : "Hotels & Concierges"}
+            </a>
           </div>
         </div>
       </div>

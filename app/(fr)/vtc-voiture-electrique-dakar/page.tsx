@@ -82,11 +82,6 @@ const faq = [
       "Les zones principales sont Dakar, Diamniadio, AIBD, Thiès, Mbour et Saly. Chaque trajet est confirmé selon l'itinéraire et la disponibilité, sans publier une distance maximale générique.",
   },
   {
-    question: "Comment la recharge est-elle gérée ?",
-    answer:
-      "Dakar Fleet organise la disponibilité et la recharge de ses véhicules en fonction des prestations planifiées. Le client reçoit la confirmation du trajet, sans avoir à gérer cette organisation.",
-  },
-  {
     question: "Comment réserver un trajet en véhicule électrique ?",
     answer:
       "Envoyez la date, l'horaire, le lieu de prise en charge et la destination via WhatsApp. Dakar Fleet confirme ensuite la faisabilité et la disponibilité.",
@@ -203,11 +198,10 @@ export default function ElectricFleetPage() {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] text-[#4CAF7D]">Continuité de service</p>
-            <h2 className="mt-3 font-title text-4xl text-white">Une disponibilité préparée en amont</h2>
+            <h2 className="mt-3 font-title text-4xl text-white">Une disponibilité confirmée à la réservation</h2>
             <p className="mt-4 leading-8 text-white/70">
-              L&apos;équipe organise la recharge et l&apos;affectation des véhicules selon les prestations
-              planifiées. La réservation sert à vérifier que le trajet demandé est compatible avec
-              l&apos;organisation du service au moment choisi.
+              La réservation permet à Dakar Fleet de confirmer la faisabilité du trajet et la
+              disponibilité d&apos;un véhicule pour l&apos;horaire demandé.
             </p>
           </div>
         </div>
