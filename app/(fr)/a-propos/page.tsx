@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { AboutPage } from "@/components/AboutPage";
+import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { buildWebPage, ORG_ID } from "@/lib/structured-data";
 
 const title = "À propos de Dakar Fleet | Transport avec chauffeur à Dakar";
 const description =
@@ -32,6 +34,20 @@ export const metadata: Metadata = {
   },
 };
 
+const webPage = buildWebPage({
+  type: "AboutPage",
+  canonical: `${SITE_URL}${localizedRoutes.about.fr}`,
+  name: title,
+  description,
+  lang: "fr",
+  mainEntityId: ORG_ID,
+});
+
 export default function AProposPage() {
-  return <AboutPage lang="fr" />;
+  return (
+    <>
+      <JsonLd data={webPage} />
+      <AboutPage lang="fr" />
+    </>
+  );
 }

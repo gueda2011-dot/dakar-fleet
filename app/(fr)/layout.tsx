@@ -3,7 +3,8 @@ import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "../globals.css";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, PHONE, EMAIL } from "@/lib/constants";
+import { SITE_URL } from "@/lib/constants";
+import { identityGraph } from "@/lib/structured-data";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -53,35 +54,11 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "TaxiService",
-  name: "Dakar Fleet",
-  description:
-    "Service de transport premium avec chauffeur à Dakar. Transferts aéroport, déplacements business, excursions.",
-  url: SITE_URL,
-  telephone: PHONE,
-  email: EMAIL,
-  areaServed: { "@type": "City", name: "Dakar", addressCountry: "SN" },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday", "Tuesday", "Wednesday", "Thursday",
-      "Friday", "Saturday", "Sunday",
-    ],
-    opens: "00:00",
-    closes: "23:59",
-  },
-  priceRange: "FCFA",
-  image: `${SITE_URL}/logo.png`,
-  sameAs: [`https://wa.me/221777796922`],
-};
-
 export default function FrLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className={`${dmSans.variable} ${cormorant.variable} antialiased`}>
-        <JsonLd data={jsonLd} />
+        <JsonLd data={identityGraph} />
         {children}
         <GoogleAnalytics gaId="G-90BGR08TSS" />
       </body>
