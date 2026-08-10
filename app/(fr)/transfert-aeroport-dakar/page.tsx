@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Transfert Aéroport AIBD Dakar | VTC Premium",
     description:
       "Préparez votre transfert depuis ou vers l'AIBD avec un chauffeur privé, 24h/24 et 7j/7 sur réservation.",
-    url: `${SITE_URL}/transfert-aeroport-dakar`,
+    url: `${SITE_URL}${localizedRoutes.airportTransfer.fr}`,
   },
   twitter: {
     title: "Transfert Aéroport AIBD Dakar | VTC Premium",
@@ -34,8 +34,11 @@ export const metadata: Metadata = {
       "Préparez votre transfert depuis ou vers l'AIBD avec un chauffeur privé, 24h/24 et 7j/7 sur réservation.",
   },
   alternates: {
-    canonical: `${SITE_URL}/transfert-aeroport-dakar`,
-    languages: {},
+    canonical: `${SITE_URL}${localizedRoutes.airportTransfer.fr}`,
+    languages: {
+      fr: `${SITE_URL}${localizedRoutes.airportTransfer.fr}`,
+      en: `${SITE_URL}${localizedRoutes.airportTransfer.en}`,
+    },
   },
 };
 

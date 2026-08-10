@@ -1,7 +1,14 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { localizedRoutes } from "@/lib/localized-routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const serviceRoutes = [
+    localizedRoutes.airportTransfer,
+    localizedRoutes.businessChauffeur,
+    localizedRoutes.electricChauffeur,
+  ];
+
   return [
     {
       url: `${SITE_URL}/`,
@@ -19,14 +26,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: { fr: `${SITE_URL}/`, en: `${SITE_URL}/en` },
       },
     },
-    ...[
-      "/transfert-aeroport-dakar",
-      "/chauffeur-prive-business-dakar",
-      "/vtc-voiture-electrique-dakar",
-    ].map((path) => ({
-      url: `${SITE_URL}${path}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    })),
+    ...serviceRoutes.flatMap((routes) =>
+      (["fr", "en"] as const).map((locale) => ({
+        url: `${SITE_URL}${routes[locale]}`,
+        changeFrequency: "weekly" as const,
+        priority: 0.9,
+        alternates: {
+          languages: {
+            fr: `${SITE_URL}${routes.fr}`,
+            en: `${SITE_URL}${routes.en}`,
+          },
+        },
+      })),
+    ),
   ];
 }
