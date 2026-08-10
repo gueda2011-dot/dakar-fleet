@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Chauffeur Privé & Mise à disposition | Dakar",
     description:
       "Organisez vos rendez-vous, transferts professionnels et mises à disposition avec chauffeur à Dakar.",
-    url: `${SITE_URL}/chauffeur-prive-business-dakar`,
+    url: `${SITE_URL}${localizedRoutes.businessChauffeur.fr}`,
   },
   twitter: {
     title: "Chauffeur Privé & Mise à disposition | Dakar",
@@ -34,8 +34,11 @@ export const metadata: Metadata = {
       "Organisez vos rendez-vous, transferts professionnels et mises à disposition avec chauffeur à Dakar.",
   },
   alternates: {
-    canonical: `${SITE_URL}/chauffeur-prive-business-dakar`,
-    languages: {},
+    canonical: `${SITE_URL}${localizedRoutes.businessChauffeur.fr}`,
+    languages: {
+      fr: `${SITE_URL}${localizedRoutes.businessChauffeur.fr}`,
+      en: `${SITE_URL}${localizedRoutes.businessChauffeur.en}`,
+    },
   },
 };
 

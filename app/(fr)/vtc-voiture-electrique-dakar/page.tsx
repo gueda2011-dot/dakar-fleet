@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "VTC électrique avec chauffeur à Dakar",
     description:
       "Dakar Fleet opère aujourd'hui une flotte entièrement électrique pour ses services avec chauffeur.",
-    url: `${SITE_URL}/vtc-voiture-electrique-dakar`,
+    url: `${SITE_URL}${localizedRoutes.electricChauffeur.fr}`,
   },
   twitter: {
     title: "VTC électrique avec chauffeur à Dakar",
@@ -33,8 +33,11 @@ export const metadata: Metadata = {
       "Dakar Fleet opère aujourd'hui une flotte entièrement électrique pour ses services avec chauffeur.",
   },
   alternates: {
-    canonical: `${SITE_URL}/vtc-voiture-electrique-dakar`,
-    languages: {},
+    canonical: `${SITE_URL}${localizedRoutes.electricChauffeur.fr}`,
+    languages: {
+      fr: `${SITE_URL}${localizedRoutes.electricChauffeur.fr}`,
+      en: `${SITE_URL}${localizedRoutes.electricChauffeur.en}`,
+    },
   },
 };
 

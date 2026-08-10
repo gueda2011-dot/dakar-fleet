@@ -7,6 +7,21 @@ import type { AnalyticsContext } from "@/lib/analytics";
 
 export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsContext: AnalyticsContext }) {
   const t = content[lang];
+  const serviceLinks = [
+    {
+      href: localizedRoutes.airportTransfer[lang],
+      label: lang === "fr" ? "Transfert Aéroport" : "Airport Transfers",
+    },
+    {
+      href: localizedRoutes.businessChauffeur[lang],
+      label: lang === "fr" ? "Chauffeur Privé & Business" : "Private & Business Chauffeur",
+    },
+    {
+      href: localizedRoutes.electricChauffeur[lang],
+      label: lang === "fr" ? "VTC électrique" : "Electric Chauffeur",
+    },
+  ] as const;
+
   return (
     <footer className="border-t border-white/10 bg-black">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 text-white/70 lg:grid-cols-3 lg:px-8">
@@ -43,13 +58,11 @@ export function Footer({ lang, analyticsContext }: { lang: Locale; analyticsCont
         <div>
           <h3 className="font-title text-2xl text-[#F7F3EE]">{t.footer.servicesTitle}</h3>
           <div className="mt-4 space-y-3">
-            {lang === "fr" && (
-              <>
-                <a href={localizedRoutes.airportTransfer.fr} className="block transition hover:text-[#C9A84C]">Transfert Aéroport</a>
-                <a href={localizedRoutes.businessChauffeur.fr} className="block transition hover:text-[#C9A84C]">Chauffeur Privé & Business</a>
-                <a href={localizedRoutes.electricChauffeur.fr} className="block transition hover:text-[#C9A84C]">VTC électrique</a>
-              </>
-            )}
+            {serviceLinks.map((link) => (
+              <a key={link.href} href={link.href} className="block transition hover:text-[#C9A84C]">
+                {link.label}
+              </a>
+            ))}
             <a href={`${localizedRoutes.home[lang]}#partenaires`} className="block transition hover:text-[#C9A84C]">
               {lang === "fr" ? "Hôtels & Conciergeries" : "Hotels & Concierges"}
             </a>

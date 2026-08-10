@@ -25,6 +25,21 @@ export function PageTemplate({ lang }: { lang: Locale }) {
   };
   const WA = `${WA_BASE}?text=${t.whatsappMessage}`;
   const WA_PARTNER = `${WA_BASE}?text=${t.whatsappPartnerMessage}`;
+  const serviceLinks = [
+    {
+      href: localizedRoutes.airportTransfer[lang],
+      label: lang === "fr" ? "Découvrir le transfert aéroport" : "Explore airport transfers",
+    },
+    {
+      href: localizedRoutes.businessChauffeur[lang],
+      label: lang === "fr" ? "Découvrir la mise à disposition" : "Explore private chauffeur services",
+    },
+    {
+      href: localizedRoutes.businessChauffeur[lang],
+      label: lang === "fr" ? "Découvrir le transport business" : "Explore business chauffeur services",
+    },
+    null,
+  ] as const;
   const specKeys = [
     t.fleet.specs.passengers,
     t.fleet.specs.luggage,
@@ -160,29 +175,29 @@ export function PageTemplate({ lang }: { lang: Locale }) {
           </FadeIn>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {t.services.items.map((service, i) => (
-              <FadeIn key={service.title} delay={i * 80}>
-                <article className="h-full rounded-[1.8rem] border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-1 hover:border-[#C9A84C]/35 hover:bg-white/[0.07]">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/20 bg-[#C9A84C]/10">
-                    {serviceIcons[i]}
-                  </div>
-                  <h3 className="font-title text-2xl text-[#F7F3EE]">{service.title}</h3>
-                  <p className="mt-3 leading-7 text-white/70">{service.description}</p>
-                  {lang === "fr" && i < 3 && (
-                    <Link
-                      href={i === 0 ? localizedRoutes.airportTransfer.fr : localizedRoutes.businessChauffeur.fr}
-                      className="mt-5 inline-block text-sm font-medium text-[#C9A84C] transition hover:text-[#E8C97A]"
-                    >
-                      {i === 0
-                        ? "Découvrir le transfert aéroport"
-                        : i === 1
-                          ? "Découvrir la mise à disposition"
-                          : "Découvrir le transport business"}
-                    </Link>
-                  )}
-                </article>
-              </FadeIn>
-            ))}
+            {t.services.items.map((service, i) => {
+              const serviceLink = serviceLinks[i];
+
+              return (
+                <FadeIn key={service.title} delay={i * 80}>
+                  <article className="h-full rounded-[1.8rem] border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-1 hover:border-[#C9A84C]/35 hover:bg-white/[0.07]">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/20 bg-[#C9A84C]/10">
+                      {serviceIcons[i]}
+                    </div>
+                    <h3 className="font-title text-2xl text-[#F7F3EE]">{service.title}</h3>
+                    <p className="mt-3 leading-7 text-white/70">{service.description}</p>
+                    {serviceLink ? (
+                      <Link
+                        href={serviceLink.href}
+                        className="mt-5 inline-block text-sm font-medium text-[#C9A84C] transition hover:text-[#E8C97A]"
+                      >
+                        {serviceLink.label}
+                      </Link>
+                    ) : null}
+                  </article>
+                </FadeIn>
+              );
+            })}
           </div>
 
           <FadeIn delay={200}>
@@ -251,14 +266,12 @@ export function PageTemplate({ lang }: { lang: Locale }) {
                 {t.fleet.title}
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">{t.fleet.subtitle}</p>
-              {lang === "fr" && (
-                <Link
-                  href={localizedRoutes.electricChauffeur.fr}
-                  className="mt-5 inline-block text-sm font-medium text-[#4CAF7D] transition hover:text-[#7BD8A4]"
-                >
-                  Découvrir notre service VTC électrique
-                </Link>
-              )}
+              <Link
+                href={localizedRoutes.electricChauffeur[lang]}
+                className="mt-5 inline-block text-sm font-medium text-[#4CAF7D] transition hover:text-[#7BD8A4]"
+              >
+                {lang === "fr" ? "Découvrir notre service VTC électrique" : "Explore our electric chauffeur service"}
+              </Link>
             </div>
           </FadeIn>
 
