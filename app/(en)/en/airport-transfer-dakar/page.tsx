@@ -273,8 +273,8 @@ export default function AirportTransferPage() {
         <div className="mx-auto max-w-4xl px-6 py-12 text-center lg:px-8">
           <h2 className="font-title text-3xl text-white">Need a chauffeur after your airport transfer?</h2>
           <p className="mx-auto mt-3 max-w-2xl leading-7 text-white/65">
-            Continue your journey with a point-to-point trip or chauffeur availability based on
-            your schedule in Dakar.
+            Continue your journey with a point-to-point trip or a multi-stop chauffeur service
+            based on your schedule in Dakar.
           </p>
           <Link
             href={localizedRoutes.businessChauffeur.en}

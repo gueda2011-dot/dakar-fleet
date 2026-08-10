@@ -32,7 +32,7 @@ export function PageTemplate({ lang }: { lang: Locale }) {
     },
     {
       href: localizedRoutes.businessChauffeur[lang],
-      label: lang === "fr" ? "Découvrir la mise à disposition" : "Explore chauffeur availability",
+      label: lang === "fr" ? "Découvrir la mise à disposition" : "Explore private chauffeur services",
     },
     {
       href: localizedRoutes.businessChauffeur[lang],

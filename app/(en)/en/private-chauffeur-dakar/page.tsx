@@ -11,7 +11,7 @@ import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
 
 export const metadata: Metadata = {
-  title: "Private Chauffeur Dakar | Business Driver Service - Dakar Fleet",
+  title: "Private Chauffeur Dakar | Business Chauffeur Service - Dakar Fleet",
   description:
     "Private chauffeur service in Dakar for point-to-point trips, business appointments and multi-stop itineraries. Available 24/7 by reservation.",
   keywords: [
@@ -66,9 +66,9 @@ const servicePrinciples = [
 
 const faq = [
   {
-    question: "What is the difference between a point-to-point trip and chauffeur availability?",
+    question: "What is the difference between a point-to-point trip and a multi-stop chauffeur service?",
     answer:
-      "A point-to-point trip connects one pickup location with one destination. Chauffeur availability covers an agreed period and programme that may include several stops.",
+      "A point-to-point trip connects one pickup location with one destination. A multi-stop chauffeur service can be arranged for an agreed period and programme, with several stops if required.",
   },
   {
     question: "Can I book a chauffeur for several business appointments?",
@@ -93,7 +93,7 @@ const faq = [
   {
     question: "How do I request a private chauffeur quote?",
     answer:
-      "Send the date, pickup location, expected times, stops and required service period through WhatsApp. Chauffeur availability is priced on request for the confirmed programme.",
+      "Send the date, pickup location, expected times, stops and required service period through WhatsApp. Pricing for a multi-stop chauffeur service is provided on request for the confirmed programme.",
   },
 ] as const;
 
@@ -164,7 +164,7 @@ export default function PrivateChauffeurPage() {
             </p>
           </article>
           <article className="rounded-[1.6rem] border border-white/10 bg-white/5 p-6">
-            <h3 className="font-title text-2xl text-white">Chauffeur availability</h3>
+            <h3 className="font-title text-2xl text-white">Multi-stop chauffeur service</h3>
             <p className="mt-3 leading-7 text-white/65">
               This format suits a programme with several stops or an agreed service period. The
               itinerary and times are set out in the quote.
@@ -254,7 +254,7 @@ export default function PrivateChauffeurPage() {
         <p className="text-[11px] uppercase tracking-[0.2em] text-[#C9A84C]">Pricing</p>
         <h2 className="mt-3 font-title text-4xl text-white">A quote based on the confirmed programme</h2>
         <p className="mt-4 leading-8 text-white/70">
-          Chauffeur availability is priced on request. The proposal considers the service period,
+          Multi-stop chauffeur services are priced on request. The proposal considers the service period,
           stops, times and areas to be covered. Sharing even a provisional itinerary helps Dakar
           Fleet prepare a more precise response.
         </p>
