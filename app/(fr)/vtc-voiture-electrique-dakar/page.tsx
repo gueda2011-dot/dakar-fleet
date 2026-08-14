@@ -9,11 +9,16 @@ import { content } from "@/i18n/content";
 import type { AnalyticsContext } from "@/lib/analytics";
 import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { JsonLd } from "@/components/JsonLd";
+import { buildWebPage, SERVICE_ELECTRIC_ID } from "@/lib/structured-data";
+
+const title = "VTC Électrique Dakar | Chauffeur en véhicule BYD";
+const description =
+  "Découvrez le service avec chauffeur de Dakar Fleet dans sa flotte actuellement entièrement électrique : BYD Atto 2 et BYD Dolphin à Dakar et alentours.";
 
 export const metadata: Metadata = {
-  title: "VTC Électrique Dakar | Chauffeur en véhicule BYD",
-  description:
-    "Découvrez le service avec chauffeur de Dakar Fleet dans sa flotte actuellement entièrement électrique : BYD Atto 2 et BYD Dolphin à Dakar et alentours.",
+  title,
+  description,
   keywords: [
     "VTC électrique Dakar",
     "chauffeur véhicule électrique Dakar",
@@ -40,6 +45,14 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const webPage = buildWebPage({
+  canonical: `${SITE_URL}${localizedRoutes.electricChauffeur.fr}`,
+  name: title,
+  description,
+  lang: "fr",
+  mainEntityId: SERVICE_ELECTRIC_ID,
+});
 
 const benefits = [
   {
@@ -103,6 +116,7 @@ export default function ElectricFleetPage() {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
+      <JsonLd data={webPage} />
       <NavHeader
         lang={lang}
         nav={t.nav}

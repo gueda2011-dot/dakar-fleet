@@ -9,11 +9,18 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { localizedRoutes } from "@/lib/localized-routes";
 import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import type { AnalyticsContext } from "@/lib/analytics";
+import { JsonLd } from "@/components/JsonLd";
+import { buildWebPage, SERVICE_AIRPORT_ID } from "@/lib/structured-data";
+
+const title = "Transfert Aéroport AIBD Dakar | Chauffeur Privé - Dakar Fleet";
+const description =
+  "Transfert aéroport AIBD vers Dakar, Diamniadio, Thiès, Mbour ou Saly. Chauffeur privé, flotte actuelle électrique et service disponible 24h/24.";
+const structuredDescription =
+  "Transfert aéroport AIBD vers Dakar, Diamniadio, Thiès, Mbour ou Saly. Service avec chauffeur organisable 24h/24 et 7j/7, sur réservation et selon disponibilité.";
 
 export const metadata: Metadata = {
-  title: "Transfert Aéroport AIBD Dakar | Chauffeur Privé - Dakar Fleet",
-  description:
-    "Transfert aéroport AIBD vers Dakar, Diamniadio, Thiès, Mbour ou Saly. Chauffeur privé, flotte actuelle électrique et service disponible 24h/24.",
+  title,
+  description,
   keywords: [
     "transfert aéroport Dakar",
     "navette AIBD",
@@ -41,6 +48,14 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const webPage = buildWebPage({
+  canonical: `${SITE_URL}${localizedRoutes.airportTransfer.fr}`,
+  name: title,
+  description: structuredDescription,
+  lang: "fr",
+  mainEntityId: SERVICE_AIRPORT_ID,
+});
 
 const pickupSteps = [
   {
@@ -115,6 +130,7 @@ export default function TransfertAeroportPage() {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
+      <JsonLd data={webPage} />
       <NavHeader
         lang={lang}
         nav={t.nav}

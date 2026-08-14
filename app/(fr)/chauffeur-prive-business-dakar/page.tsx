@@ -9,11 +9,16 @@ import { content } from "@/i18n/content";
 import type { AnalyticsContext } from "@/lib/analytics";
 import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { JsonLd } from "@/components/JsonLd";
+import { buildWebPage, SERVICE_PRIVATE_ID } from "@/lib/structured-data";
+
+const title = "Chauffeur Privé & Business VTC Dakar | Dakar Fleet";
+const description =
+  "Chauffeur privé à Dakar pour trajets ponctuels, rendez-vous et mise à disposition. Service 24h/24 à Dakar, Diamniadio et zones principales sur devis.";
 
 export const metadata: Metadata = {
-  title: "Chauffeur Privé & Business VTC Dakar | Dakar Fleet",
-  description:
-    "Chauffeur privé à Dakar pour trajets ponctuels, rendez-vous et mise à disposition. Service 24h/24 à Dakar, Diamniadio et zones principales sur devis.",
+  title,
+  description,
   keywords: [
     "chauffeur privé Dakar",
     "location voiture avec chauffeur Sénégal",
@@ -41,6 +46,14 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const webPage = buildWebPage({
+  canonical: `${SITE_URL}${localizedRoutes.businessChauffeur.fr}`,
+  name: title,
+  description,
+  lang: "fr",
+  mainEntityId: SERVICE_PRIVATE_ID,
+});
 
 const useCases = [
   "Trajet ponctuel vers un rendez-vous, un hôtel ou un lieu d'événement",
@@ -110,6 +123,7 @@ export default function BusinessPage() {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
+      <JsonLd data={webPage} />
       <NavHeader
         lang={lang}
         nav={t.nav}

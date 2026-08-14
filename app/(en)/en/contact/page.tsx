@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { ContactPage } from "@/components/ContactPage";
+import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { buildWebPage, ORG_ID } from "@/lib/structured-data";
 
 const title = "Contact Dakar Fleet | Chauffeur & Airport Transfers";
 const description =
@@ -32,6 +34,20 @@ export const metadata: Metadata = {
   },
 };
 
+const webPage = buildWebPage({
+  type: "ContactPage",
+  canonical: `${SITE_URL}${localizedRoutes.contact.en}`,
+  name: title,
+  description,
+  lang: "en",
+  aboutId: ORG_ID,
+});
+
 export default function EnContactPage() {
-  return <ContactPage lang="en" />;
+  return (
+    <>
+      <JsonLd data={webPage} />
+      <ContactPage lang="en" />
+    </>
+  );
 }
