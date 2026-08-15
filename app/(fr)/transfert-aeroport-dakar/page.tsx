@@ -15,6 +15,8 @@ import { buildWebPage, SERVICE_AIRPORT_ID } from "@/lib/structured-data";
 const title = "Transfert Aéroport AIBD Dakar | Chauffeur Privé - Dakar Fleet";
 const description =
   "Transfert aéroport AIBD vers Dakar, Diamniadio, Thiès, Mbour ou Saly. Chauffeur privé, flotte actuelle électrique et service disponible 24h/24.";
+const structuredDescription =
+  "Transfert aéroport AIBD vers Dakar, Diamniadio, Thiès, Mbour ou Saly. Service avec chauffeur organisable 24h/24 et 7j/7, sur réservation et selon disponibilité.";
 
 export const metadata: Metadata = {
   title,
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
 const webPage = buildWebPage({
   canonical: `${SITE_URL}${localizedRoutes.airportTransfer.fr}`,
   name: title,
-  description,
+  description: structuredDescription,
   lang: "fr",
   mainEntityId: SERVICE_AIRPORT_ID,
 });

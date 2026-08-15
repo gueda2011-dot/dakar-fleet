@@ -7,7 +7,7 @@ const webPage = buildWebPage({
   canonical: `${SITE_URL}/`,
   name: "Dakar Fleet | Transport premium avec chauffeur à Dakar",
   description:
-    "Dakar Fleet propose des transferts aéroport, déplacements business, excursions et mise à disposition avec chauffeur à Dakar. Véhicules électriques haut de gamme, disponibles 24h/24.",
+    "Dakar Fleet propose des transferts aéroport, déplacements business, excursions et mise à disposition avec chauffeur à Dakar. Services organisables 24h/24 et 7j/7, sur réservation et selon disponibilité.",
   lang: "fr",
   aboutId: ORG_ID,
 });
