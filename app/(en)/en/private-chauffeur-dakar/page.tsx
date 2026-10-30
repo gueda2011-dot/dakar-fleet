@@ -9,11 +9,16 @@ import { content } from "@/i18n/content";
 import type { AnalyticsContext } from "@/lib/analytics";
 import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { JsonLd } from "@/components/JsonLd";
+import { buildWebPage, SERVICE_PRIVATE_ID } from "@/lib/structured-data";
+
+const title = "Private Chauffeur Dakar | Business Chauffeur Service - Dakar Fleet";
+const description =
+  "Private chauffeur service in Dakar for point-to-point trips, business appointments and multi-stop itineraries. Available 24/7 by reservation.";
 
 export const metadata: Metadata = {
-  title: "Private Chauffeur Dakar | Business Chauffeur Service - Dakar Fleet",
-  description:
-    "Private chauffeur service in Dakar for point-to-point trips, business appointments and multi-stop itineraries. Available 24/7 by reservation.",
+  title,
+  description,
   keywords: [
     "private chauffeur Dakar",
     "chauffeur service Dakar",
@@ -40,6 +45,14 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const webPage = buildWebPage({
+  canonical: `${SITE_URL}${localizedRoutes.businessChauffeur.en}`,
+  name: title,
+  description,
+  lang: "en",
+  mainEntityId: SERVICE_PRIVATE_ID,
+});
 
 const useCases = [
   "A direct journey to a meeting, hotel, event venue or airport",
@@ -109,6 +122,7 @@ export default function PrivateChauffeurPage() {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
+      <JsonLd data={webPage} />
       <NavHeader
         lang={lang}
         nav={t.nav}

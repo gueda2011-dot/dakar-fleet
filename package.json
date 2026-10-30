@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:structured-data": "node scripts/check-structured-data.mjs",
+    "test:seo": "node --test scripts/seo.test.mjs"
   },
   "dependencies": {
     "@next/third-parties": "16.3.0",

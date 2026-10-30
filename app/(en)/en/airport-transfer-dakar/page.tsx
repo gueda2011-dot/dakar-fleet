@@ -9,11 +9,16 @@ import { content } from "@/i18n/content";
 import type { AnalyticsContext } from "@/lib/analytics";
 import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { JsonLd } from "@/components/JsonLd";
+import { buildWebPage, SERVICE_AIRPORT_ID } from "@/lib/structured-data";
+
+const title = "Airport Transfer Dakar & AIBD | Private Chauffeur - Dakar Fleet";
+const description =
+  "Book a private AIBD airport transfer to Dakar, Diamniadio, Thiès, Mbour or Saly. Chauffeur service available 24 hours a day by reservation.";
 
 export const metadata: Metadata = {
-  title: "Airport Transfer Dakar & AIBD | Private Chauffeur - Dakar Fleet",
-  description:
-    "Book a private AIBD airport transfer to Dakar, Diamniadio, Thiès, Mbour or Saly. Chauffeur service available 24 hours a day by reservation.",
+  title,
+  description,
   keywords: [
     "Dakar airport transfer",
     "AIBD airport transfer",
@@ -40,6 +45,14 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const webPage = buildWebPage({
+  canonical: `${SITE_URL}${localizedRoutes.airportTransfer.en}`,
+  name: title,
+  description,
+  lang: "en",
+  mainEntityId: SERVICE_AIRPORT_ID,
+});
 
 const transferSteps = [
   {
@@ -114,6 +127,7 @@ export default function AirportTransferPage() {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
+      <JsonLd data={webPage} />
       <NavHeader
         lang={lang}
         nav={t.nav}

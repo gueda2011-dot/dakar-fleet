@@ -9,11 +9,16 @@ import { content } from "@/i18n/content";
 import type { AnalyticsContext } from "@/lib/analytics";
 import { PHONE_DISPLAY, SITE_URL, WA_BASE } from "@/lib/constants";
 import { localizedRoutes } from "@/lib/localized-routes";
+import { JsonLd } from "@/components/JsonLd";
+import { buildWebPage, SERVICE_ELECTRIC_ID } from "@/lib/structured-data";
+
+const title = "Electric Chauffeur Service Dakar | Dakar Fleet";
+const description =
+  "Travel with a chauffeur in Dakar Fleet's current all-electric fleet, including BYD Atto 2 and BYD Dolphin vehicles for airport, private and business trips.";
 
 export const metadata: Metadata = {
-  title: "Electric Chauffeur Service Dakar | Dakar Fleet",
-  description:
-    "Travel with a chauffeur in Dakar Fleet's current all-electric fleet, including BYD Atto 2 and BYD Dolphin vehicles for airport, private and business trips.",
+  title,
+  description,
   keywords: [
     "electric chauffeur Dakar",
     "electric car with driver Dakar",
@@ -40,6 +45,14 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const webPage = buildWebPage({
+  canonical: `${SITE_URL}${localizedRoutes.electricChauffeur.en}`,
+  name: title,
+  description,
+  lang: "en",
+  mainEntityId: SERVICE_ELECTRIC_ID,
+});
 
 const benefits = [
   {
@@ -108,6 +121,7 @@ export default function ElectricChauffeurPage() {
 
   return (
     <main className="bg-[#0A0A0A] text-[#F7F3EE]">
+      <JsonLd data={webPage} />
       <NavHeader
         lang={lang}
         nav={t.nav}
