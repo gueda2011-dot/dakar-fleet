@@ -141,6 +141,16 @@ function hasRel(attributes, expectedRel) {
   return attributes.rel?.toLowerCase().split(/\s+/).includes(expectedRel) ?? false;
 }
 
+// metadataBase may serialize the root URL without a trailing slash.
+// Compare HTTP resources while still rejecting relative or malformed URLs.
+function sameUrl(actual, expected) {
+  try {
+    return new URL(actual).href === new URL(expected).href;
+  } catch {
+    return false;
+  }
+}
+
 function auditSeoLinks(html, expected) {
   const links = tagAttributes(html, "link");
   const canonical = links.filter((attributes) => hasRel(attributes, "canonical"));
@@ -155,9 +165,9 @@ function auditSeoLinks(html, expected) {
     fr,
     en,
     unexpected,
-    valid: canonical.length === 1 && canonical[0].href === expected.canonical &&
-      hreflang.length === 2 && fr.length === 1 && fr[0].href === expected.alternateFr &&
-      en.length === 1 && en[0].href === expected.alternateEn && unexpected.length === 0,
+    valid: canonical.length === 1 && sameUrl(canonical[0].href, expected.canonical) &&
+      hreflang.length === 2 && fr.length === 1 && sameUrl(fr[0].href, expected.alternateFr) &&
+      en.length === 1 && sameUrl(en[0].href, expected.alternateEn) && unexpected.length === 0,
   };
 }
 
@@ -401,15 +411,15 @@ for (const expected of routes) {
   const seoLinks = auditSeoLinks(html, expected);
   check(`${expected.route}: exactly one canonical`, seoLinks.canonical.length === 1,
     `${seoLinks.canonical.length}`);
-  check(`${expected.route}: canonical`, seoLinks.canonical[0]?.href === expected.canonical,
+  check(`${expected.route}: canonical`, sameUrl(seoLinks.canonical[0]?.href, expected.canonical),
     seoLinks.canonical[0]?.href ?? "missing");
   check(`${expected.route}: exactly two hreflang links`, seoLinks.hreflang.length === 2,
     `${seoLinks.hreflang.length}`);
   check(`${expected.route}: exactly one FR hreflang`, seoLinks.fr.length === 1, `${seoLinks.fr.length}`);
-  check(`${expected.route}: FR hreflang`, seoLinks.fr[0]?.href === expected.alternateFr,
+  check(`${expected.route}: FR hreflang`, sameUrl(seoLinks.fr[0]?.href, expected.alternateFr),
     seoLinks.fr[0]?.href ?? "missing");
   check(`${expected.route}: exactly one EN hreflang`, seoLinks.en.length === 1, `${seoLinks.en.length}`);
-  check(`${expected.route}: EN hreflang`, seoLinks.en[0]?.href === expected.alternateEn,
+  check(`${expected.route}: EN hreflang`, sameUrl(seoLinks.en[0]?.href, expected.alternateEn),
     seoLinks.en[0]?.href ?? "missing");
   check(`${expected.route}: no unexpected hreflang locale`, seoLinks.unexpected.length === 0,
     seoLinks.unexpected.map(({ hreflang }) => hreflang).join(", "));
