@@ -19,6 +19,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Dakar Fleet | Premium Chauffeur Service in Dakar",
   description:
     "Dakar Fleet offers airport transfers, business travel, tours and private hire with professional drivers in Dakar. Premium BYD electric vehicles, available 24/7.",
