@@ -19,9 +19,10 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Dakar Fleet | Transport premium avec chauffeur à Dakar",
   description:
-    "Dakar Fleet propose des transferts aéroport, déplacements business, excursions et mise à disposition avec chauffeur à Dakar. Véhicules électriques haut de gamme, disponibles 24h/24.",
+    "Transferts aéroport AIBD, déplacements business et excursions avec chauffeur privé à Dakar. Véhicules électriques BYD, sur réservation 24h/24.",
   openGraph: {
     title: "Dakar Fleet | Transport premium avec chauffeur à Dakar",
     description:
